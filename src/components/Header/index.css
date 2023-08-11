@@ -1,0 +1,55 @@
+/* Custom styles for the Header component */
+.header {
+  padding: 10px;
+}
+
+/* Custom styles for the logo heading */
+.logo {
+  font-size: 1.5rem;
+}
+
+/* Custom styles for the buttons container */
+.options {
+  display: flex;
+  align-items: center;
+}
+
+/* Custom styles for the login and signup buttons */
+.options button {
+  margin-left: 10px;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+/* Bootstrap utility classes (if you want to use) */
+.mb-4 {
+  margin-bottom: 1rem !important; /* Use !important to override Bootstrap default */
+}
+
+.d-flex {
+  display: flex !important; /* Use !important to override Bootstrap default */
+}
+
+.justify-content-between {
+  justify-content: space-between !important; /* Use !important to override Bootstrap default */
+}
+
+/* Responsive styles for smaller screens */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .options {
+    margin-top: 10px;
+  }
+
+  .options button {
+    margin-left: 0;
+    margin-top: 5px;
+  }
+}
