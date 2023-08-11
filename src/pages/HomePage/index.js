@@ -1,10 +1,12 @@
 import React from 'react';
 import './index.css';
 import image from '../../images/hero.png';
+import Row from '../../components/CategoryRow/index';
 import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap CSS
 
 const Homepage = () => {
   return (
+    <div>
     <div className="container">
       <div className="row align-items-start">
         <div className="col-lg-6 col-md-12">
@@ -20,6 +22,8 @@ const Homepage = () => {
           </div>
         </div>
       </div>
+    </div>
+    <Row />
     </div>
   );
 };

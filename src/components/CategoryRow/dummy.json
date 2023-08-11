@@ -1,0 +1,58 @@
+[
+    {
+      "name": "John Doe",
+      "profession": "Software Developer",
+      "rating": 4.8,
+      "price": 50,
+      "skills": ["JavaScript", "React", "Node.js"],
+      "phone": "123-456-7890",
+      "email": "john@example.com",
+      "aadhar": "1234-5678-9012",
+      "city": "New York"
+    },
+    {
+      "name": "Jane Smith",
+      "profession": "Graphic Designer",
+      "rating": 4.6,
+      "price": 40,
+      "skills": ["Illustrator", "Photoshop", "UI/UX Design"],
+      "phone": "987-654-3210",
+      "email": "jane@example.com",
+      "aadhar": "9876-5432-1098",
+      "city": "Los Angeles"
+    },
+    {
+      "name": "Alex Johnson",
+      "profession": "Freelance Writer",
+      "rating": 4.9,
+      "price": 70,
+      "skills": ["Content Writing", "Copywriting", "Blogging", "SEO"],
+      "phone": "555-123-4567",
+      "email": "alex@example.com",
+      "aadhar": "5555-1234-5678",
+      "city": "Chicago"
+    },
+    {
+      "name": "Emily Brown",
+      "profession": "Digital Marketer",
+      "rating": 3.7,
+      "price": 60,
+      "skills": ["Social Media", "SEO", "Email Marketing", "PPC"],
+      "phone": "111-222-3333",
+      "email": "emily@example.com",
+      "aadhar": "1111-2222-3333",
+      "city": "San Francisco"
+    },
+    {
+      "name": "Michael Johnson",
+      "profession": "Photographer",
+      "rating": 4.5,
+      "price": 90,
+      "skills": ["Portrait Photography", "Wedding Photography", "Photo Editing"],
+      "phone": "444-555-6666",
+      "email": "michael@example.com",
+      "aadhar": "4444-5555-6666",
+      "city": "Miami"
+    }
+  ]
+  
