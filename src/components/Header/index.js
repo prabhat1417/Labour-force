@@ -12,15 +12,8 @@ function Header() {
   const [showLoginModal, setShowLoginModal] = useState(false);
   const [showSignUpModal, setShowSignUpModal] = useState(false);
 
-  const handleSignOut = () => {
-    auth.signOut()
-      .then(() => {
-        setUser(null);
-      })
-      .catch((error) => {
-        console.log("Sign out error:", error);
-      });
-  }
+  const handleprofile = () => {
+    navigate('/profile')  }
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((currentuser) => {
@@ -28,6 +21,9 @@ function Header() {
         handleLoginModalClose();
         handleSignUpModalClose();
         setUser(currentuser);
+      }
+      else{
+        setUser(null)
       }
     });
     return () => unsubscribe();
@@ -66,13 +62,11 @@ function Header() {
             </button>
           </div>
         ) : (
-          <button className="btn" style={{ color: "white", backgroundColor: "#f04800" }} onClick={handleSignOut}>
-            Logout
+          <button className="btn" style={{ color: "white", backgroundColor: "#f04800" }} onClick={handleprofile}>
+            Profile
           </button>
         )}
-      </div>
-       
-       
+      </div>   
       <LoginModal show={showLoginModal} handleClose={handleLoginModalClose} />
       <SignUpModal show={showSignUpModal} handleClose={handleSignUpModalClose} />
     </div>

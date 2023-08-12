@@ -23,5 +23,4 @@ export const database = getDatabase(firebaseApp);
 const auth = firebase.auth();
 
 export const db = getFirestore(firebaseApp);
-
 export { auth };
