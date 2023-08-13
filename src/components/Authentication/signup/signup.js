@@ -127,7 +127,7 @@ const SignUp = () => {
                 </button>
                 <p className="text-center mt-3 mb-0">
                     Already have an account?{" "}
-                    <span className="text-primary" style={{ cursor: "pointer" }} onClick={redirectToLogin}>
+                    <span className="text-primary">
                         Login
                     </span>
                 </p>

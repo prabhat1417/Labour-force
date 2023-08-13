@@ -12,9 +12,6 @@ function Header() {
   const [showLoginModal, setShowLoginModal] = useState(false);
   const [showSignUpModal, setShowSignUpModal] = useState(false);
 
-  const handleprofile = () => {
-    navigate('/profile')  }
-
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((currentuser) => {
       if (currentuser) {
@@ -62,9 +59,14 @@ function Header() {
             </button>
           </div>
         ) : (
-          <button className="btn" style={{ color: "white", backgroundColor: "#f04800" }} onClick={handleprofile}>
+          <div>
+          <button className="btn" style={{ color: "white", backgroundColor: "#f04800" }} onClick={()=>navigate('/profile')}>
             Profile
           </button>
+          <button className="btn btn-light" onClick={()=>navigate('/registration')}>
+              Registration
+            </button>
+          </div>
         )}
       </div>   
       <LoginModal show={showLoginModal} handleClose={handleLoginModalClose} />

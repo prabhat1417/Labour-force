@@ -65,7 +65,7 @@ const Login = () => {
 
             <p className="text-center mt-3 mb-0">
               Create an account?{" "}
-              <span className="text-primary" style={{ cursor: "pointer" }} onClick={redirectToSignup}>
+              <span className="text-primary" >
                 Signup
               </span>
             </p>
