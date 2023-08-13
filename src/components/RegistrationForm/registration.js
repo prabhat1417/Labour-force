@@ -14,7 +14,7 @@ const RegistrationForm = () => {
     category: '',
     city: '',
     MobileNo: '',
-    Experience:'',
+    Experience:'', 
     customers: [],
   });
   const [errormsg, setErrorMsg] = useState('');
@@ -48,6 +48,7 @@ const RegistrationForm = () => {
         category: '',
         city: '',
         MobileNo: '',
+        Experience:'',
         customers: [],
       });
       console.log('Document written with ID: ', userDocRef.id);
@@ -222,17 +223,17 @@ const RegistrationForm = () => {
                     />
                   </div>
                   <div className="mb-3">
-                    <label htmlFor="mobileNo" className="form-label">
+                    <label htmlFor="experience" className="form-label">
                         Experience
                     </label>
                     <input
-                      type="tel"
+                      type="text"
                       className="form-control"
                       id="experience"
                       placeholder="eg:1year,5year"
                       value={user.Experience}
                       onChange={(e) =>
-                        setUser((prev) => ({ ...prev, MobileNo: e.target.value }))
+                        setUser((prev) => ({ ...prev, Experience:e.target.value }))
                       }
                     />
                   </div>
