@@ -10,6 +10,8 @@ import Profile from "./components/Profile/profile";
 import { useEffect } from "react";
 import { collection,getDocs } from "firebase/firestore";
 import { db } from "./firebase";
+import Dashboard from "./components/Dashboard/Dashboard";
+
 export default function App() {
      var userInfo=[];
   useEffect(() => {
@@ -26,18 +28,19 @@ export default function App() {
     fetchData();
   }, []);
 
-  console.log(userInfo);
+  // console.log(userInfo);  
   return (
     <div className="App">
 
-      <Header />
+      <Header userInfo={userInfo} />
         <Routes>
-          <Route path='/' element={<Homepage />} />
+          <Route path='/' element={<Homepage userInfo={userInfo} />} />
           <Route path='/login' element={<Login />} />
           <Route path='/signup' element={<SignUp />} />
           <Route path='/description' element={<Description />} />
           <Route path='/registration' element={<RegistrationForm/>}/>
           <Route path='/profile' element={<Profile/>}/>
+          <Route path='/dashboard' element={<Dashboard userInfo={userInfo}/>}/>
         </Routes>
 
     </div>

@@ -1,7 +1,10 @@
 import React from 'react'
 import './Dashboard.css';
 
-const Dashboard = () => {
+const Dashboard = (userInfo) => {
+
+    console.log(userInfo);
+
   return (
     <div className='dashboard'>
         <div className='dashboard-profile'>

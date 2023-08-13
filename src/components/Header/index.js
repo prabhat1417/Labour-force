@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 import "./index.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, NavLink } from 'react-router-dom';
 import { auth } from '../../firebase';
 import LoginModal from "../../components/Authentication/Modal/loginmodal";
 import SignUpModal from "../../components/Authentication/Modal/signupmodal";
 import { db } from "../../firebase";
 import { collection, getDocs, query, where } from "firebase/firestore";
 
-function Header() {
+function Header(userInfo) {
   const navigate = useNavigate();
   const [user, setUser] = useState(null);
   const [showLoginModal, setShowLoginModal] = useState(false);
@@ -52,6 +52,9 @@ function Header() {
   const handleSignUpModalClose = () => {
     setShowSignUpModal(false);
   };
+
+  // console.log(userInfo);
+
   return (
     <div className="header d-flex justify-content-between mb-4">
       <div className="logo">
@@ -74,12 +77,14 @@ function Header() {
             </button>
             {isMembershipChecked ? (
               isWorker ?
-                <button>
+              <NavLink to='/dashboard'>
+                <button className="btn btn-dark">
                   Dashboard
                 </button>
+                </NavLink>
               :
-                <button className="btn btn-light" onClick={() => navigate('/registration')}>
-                  Registration
+                <button className="btn btn-dark" onClick={() => navigate('/registration')}>
+                  Register As A Professional
                 </button>
             ) : (
               <button className="btn btn-light" disabled>

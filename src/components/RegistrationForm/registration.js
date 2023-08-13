@@ -61,6 +61,8 @@ const RegistrationForm = () => {
       console.error('Error adding document: ', error);
       setErrorMsg('Registration failed. Please try again.');
     }
+
+    window.location.reload();
   };
 
   const handleSkillChange = (index, field, value) => {
