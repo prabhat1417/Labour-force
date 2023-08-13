@@ -8,6 +8,7 @@ import SignUp from "./components/Authentication/signup/signup";
 import {  Route, Routes } from 'react-router-dom'
 import RegistrationForm from "./components/RegistrationForm/registration";
 import Profile from "./components/Profile/profile";
+import Dashboard from "./components/Dashboard/Dashboard";
 
 export default function App() {
   return (
@@ -21,6 +22,7 @@ export default function App() {
           <Route path='/description' element={<Description />} />
           <Route path='/registration' element={<RegistrationForm/>}/>
           <Route path='/profile' element={<Profile/>}/>
+          <Route path='/dashboard' element={<Dashboard/>}/>
         </Routes>
 
     </div>

@@ -37,6 +37,15 @@
   justify-content: space-between !important; /* Use !important to override Bootstrap default */
 }
 
+.dashboard-btn {
+  background-color: #f04800;
+  color: white;
+}
+
+.dashboard-btn:hover {
+  background-color: #bf4009;
+}
+
 /* Responsive styles for smaller screens */
 @media (max-width: 768px) {
   .header {

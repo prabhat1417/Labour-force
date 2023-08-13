@@ -1,0 +1,53 @@
+.dashboard {
+    background-color: #7561d4;
+    height: 100%;
+    width: 100%;
+}
+.dashboard-profile {
+    display: grid;
+    padding: 20px;
+    background-color: #ffffff;
+}
+
+.profile-pic {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 30%;
+    background-color: white;
+    padding: 25px;
+}
+
+.pic {
+    height: 110px;
+    width: 110px;
+    border-radius: 50%;
+    background-color: #5a5554;
+}
+
+.box {
+    border: 2px solid black; 
+    border-radius: 10px; 
+    width: 30%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.info {
+    padding: 17px;
+}
+
+.title {
+    font-size: 13px;
+}
+
+.text-value {
+    font-weight: 7px;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.name-style {
+    color: #3f24c2;
+    font-size: 25px;
+}

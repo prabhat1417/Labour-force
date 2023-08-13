@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./index.css";
 import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap CSS
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, NavLink } from 'react-router-dom';
 import { auth } from '../../firebase';
 import LoginModal from "../../components/Authentication/Modal/loginmodal";
 import SignUpModal from "../../components/Authentication/Modal/signupmodal";
@@ -11,6 +11,7 @@ function Header() {
   const [user, setUser] = useState(null);
   const [showLoginModal, setShowLoginModal] = useState(false);
   const [showSignUpModal, setShowSignUpModal] = useState(false);
+  const isWroker = true;
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((currentuser) => {
@@ -50,7 +51,8 @@ function Header() {
 
       <div className="options">
         {!user ? (
-          <div>
+          <div style={{alignItems: "center"}}>
+            {isWroker && <NavLink to='/dashboard' ><button className='tbn btn-light dashboard-btn'>Dashboard</button></NavLink>}
             <button className="btn btn-light" onClick={handleLoginModalShow}>
               Login
             </button>
