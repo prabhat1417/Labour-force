@@ -130,7 +130,7 @@ const SignUp = () => {
                     <span className="text-primary">
                         Login
                     </span>
-                </p>
+                </p>1
             </div>
                   {/* Sign Up Modal */}
       <LoginModal show={showSignUpModal} handleClose={closeSignUpModal} />

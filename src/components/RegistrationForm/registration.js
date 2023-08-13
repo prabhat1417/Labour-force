@@ -16,6 +16,7 @@ const RegistrationForm = () => {
     MobileNo: '',
     Experience:'', 
     customers: [],
+    isWorker:false
   });
   const [errormsg, setErrorMsg] = useState('');
   const [check, setCheck] = useState(null);
@@ -37,7 +38,8 @@ const RegistrationForm = () => {
       return; // Don't proceed with registration
     }
     try {
-      const userDocRef = await addDoc(collection(db, 'memberships'), user);
+      const userData = { ...user, isWorker: true };
+      const userDocRef = await addDoc(collection(db, 'memberships'),userData);
       setErrorMsg('Registration successful!');
       setUser({
         Name: '',
@@ -50,9 +52,11 @@ const RegistrationForm = () => {
         MobileNo: '',
         Experience:'',
         customers: [],
+        isWorker:false
       });
-      console.log('Document written with ID: ', userDocRef.id);
       navigate('/');
+      console.log('Document written with ID: ', userDocRef.id);
+
     } catch (error) {
       console.error('Error adding document: ', error);
       setErrorMsg('Registration failed. Please try again.');
