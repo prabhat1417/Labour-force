@@ -13,7 +13,9 @@ const Homepage = (userInfo) => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
+    selectedCity = e.target[0].value;
     console.log(searchInput);
+    console.log(selectedCity);
   };
 
   return (
@@ -30,7 +32,7 @@ const Homepage = (userInfo) => {
             <form onSubmit={handleSubmit}>
               <div className="wrapper">
                 <div className="select">
-                  <select className="">
+                  <select className="" name="dropbox">
                     <option value="Ahmedabad">Ahmedabad</option>
                     <option value="Vadodara">Vadodara</option>
                   </select>
