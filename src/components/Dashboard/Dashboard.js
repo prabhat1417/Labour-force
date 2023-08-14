@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import './Dashboard.css';
 import { auth } from '../../firebase';
+import CustomerTable from './CustomerTable';
 
 const Dashboard = ({userInfo}) => {
 
@@ -86,29 +87,7 @@ const Dashboard = ({userInfo}) => {
             </div>
             
         </div>
-        <div className='customers'>
-                <div className='text-value'>Your customers</div>
-                <table className='customer-table'>
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Name</th>
-                            <th>Phone number</th>
-                            <th>Status</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {currWorker.customers && currWorker.customers.map((customer, index) => (
-                            <tr key={index}>
-                                <td>{index}</td>
-                                <td>{customer}</td>
-                                <td>9876541576</td>
-                                <td>Pending</td>
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
-        </div>
+        <CustomerTable customers={currWorker.customers} />
     </div>
   )
 }
