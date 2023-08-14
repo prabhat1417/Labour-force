@@ -27,6 +27,13 @@
     width: 110px;
     border-radius: 50%;
     background-color: #5a5554;
+    overflow: hidden; /* Clip the image within the circle */
+}
+
+.pic img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Maintain aspect ratio while covering the container */
 }
 
 .box {

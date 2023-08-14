@@ -15,11 +15,11 @@ const Dashboard = ({userInfo}) => {
                 setCurrUser({
                     email: user.email,
                     displayName: user.displayName,
-                    profile: user.picture,
+                    profile: user.photoURL, // Use user.photoURL to get the profile picture
                 });
-
+    
                 setCurrEmail(user.email);
-
+    
                 const foundWorker = userInfo.find(worker => worker.email === user.email);
                 if (foundWorker) {
                     foundWorker.customers = Array.from({ length: 10 }, (_, index) => `customer${index + 1}@example.com`);
@@ -31,9 +31,10 @@ const Dashboard = ({userInfo}) => {
         });
         return () => unsubscribe();
     }, []);
+    
 
-    if(currWorker) {
-        console.log("currWorker ", currWorker);
+    if(currUser) {
+        console.log("currUser ", currUser);
     }
 
   return (
