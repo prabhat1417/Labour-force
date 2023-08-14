@@ -74,4 +74,32 @@
     line-height: 1.2;
     margin-top: 5px; /* Adjust margin */
   }
+
+.row-buttons {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 20px;
+  background-color: #f8f8f8;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  transform: translateY(0);
+  transition: transform 0.2s ease-in-out;
+}
+
+.row-button {
+  padding: 0px 15px;
+  border: none;
+  background-color: black;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.row-button:hover {
+  background-color: white;
+  color: black;
+}
+
+
+
   

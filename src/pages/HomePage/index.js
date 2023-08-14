@@ -2,9 +2,9 @@ import React from 'react';
 import './index.css';
 import image from '../../images/hero.png';
 import Row from '../../components/CategoryRow/index';
-import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap CSS
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-const Homepage = () => {
+const Homepage = (userInfo) => {
   return (
     <div>
     <div className="container">
@@ -23,7 +23,12 @@ const Homepage = () => {
         </div>
       </div>
     </div>
-    <Row />
+    <div className='row'>
+    <h2 className="profession-header">Electrician</h2>
+    <Row userInfo={userInfo} category="Electrician"/>
+    <h2 className="profession-header">Plumber</h2>
+    <Row userInfo={userInfo} category="Plumber"/>
+    </div>
     </div>
   );
 };
