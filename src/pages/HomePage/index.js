@@ -1,37 +1,63 @@
-import React from 'react';
-import './index.css';
-import image from '../../images/hero.png';
-import Row from '../../components/CategoryRow/index';
-import Footer from '../../components/Footer';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import React, { useState, useEffect } from "react";
+import Header from "../../components/Header/index.js";
+import Footer from "../../components/Footer/index.js";
+import "./index.css";
+import Row from "../../components/CategoryRow/index";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const Homepage = (userInfo) => {
+  const [searchInput, setSearchInput] = useState("");
+  const handleInput = (e) => {
+    e.preventDefault();
+    setSearchInput(e.target.value);
+  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(searchInput);
+  };
+
   return (
-    <div>
-    <div className="container">
-      <div className="row align-items-start">
-        <div className="col-lg-6 col-md-12">
+    <>
+      <div className="top">
+        <Header userInfo={userInfo} />
+        <div className="container">
           <div className="content">
+            <p>Home / Ahmedabad</p>
             <h1 className="heading">Where we all converge, We are Labours</h1>
-            <p>Where we all converge, We are Labours</p>
-            <button className="trapeziumButton">Hire Labourers</button>
+            {/* <button className="trapeziumButton">Hire Labourers</button> */}
           </div>
-        </div>
-        <div className="col-lg-6 col-md-12">
-          <div className="picture">
-            <img src={image} alt="Picture" className="img-fluid custom-img" />
+          <div>
+            <form onSubmit={handleSubmit}>
+              <div className="wrapper">
+                <div className="select">
+                  <select className="">
+                    <option value="Ahmedabad">Ahmedabad</option>
+                    <option value="Vadodara">Vadodara</option>
+                  </select>
+                </div>
+              </div>
+              <input
+                className="search"
+                type="text"
+                placeholder="search for services"
+                onChange={handleInput}
+                value={searchInput}
+              ></input>
+            </form>
+            <p>
+              <a href="">Electrician</a>, <a href="">Plumber</a> etc.
+            </p>
           </div>
         </div>
       </div>
-    </div>
-    <div className='row'>
-    <h2 className="profession-header">Electrician</h2>
-    <Row userInfo={userInfo} category="Electrician"/>
-    <h2 className="profession-header">Plumber</h2>
-    <Row userInfo={userInfo} category="Plumber"/>
-    </div>
-    <Footer />
-    </div>
+      <div className="row">
+        <h2 className="profession-header">Electrician</h2>
+        <Row userInfo={userInfo} category="Electrician" />
+        <h2 className="profession-header">Plumber</h2>
+        <Row userInfo={userInfo} category="Plumber" />
+      </div>
+      <Footer/>
+    </>
   );
 };
 

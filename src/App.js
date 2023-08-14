@@ -1,4 +1,3 @@
-import Header from "./components/Header";
 import "./styles.css";
 import Homepage from "./pages/HomePage";
 import Description from "./components/CategoryRow/Description";
@@ -32,7 +31,6 @@ export default function App() {
   return (
     <div className="App">
 
-      <Header userInfo={userInfo} />
         <Routes>
           <Route path='/' element={<Homepage userInfo={userInfo} />} />
           <Route path='/login' element={<Login />} />
