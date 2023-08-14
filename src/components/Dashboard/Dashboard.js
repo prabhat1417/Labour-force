@@ -8,14 +8,17 @@ const Dashboard = ({userInfo}) => {
     const [currUser, setCurrUser] = useState(null);
     const [currWorker, setCurrWorker] = useState({});
     const [currEmail, setCurrEmail] = useState("");
+    const [userLoaded, setUserLoaded] = useState(false);
 
     useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged(async (user) => {
+            
             if (user) {
+                console.log(user);
                 setCurrUser({
                     email: user.email,
                     displayName: user.displayName,
-                    profile: user.photoURL, // Use user.photoURL to get the profile picture
+                    profile: user.photoURL,
                 });
     
                 setCurrEmail(user.email);
@@ -29,11 +32,11 @@ const Dashboard = ({userInfo}) => {
                 setCurrUser(null);
             }
         });
+            
         return () => unsubscribe();
     }, []);
-    
 
-    if(currUser) {
+    if(currUser?.customers) {
         console.log("currUser ", currUser);
     }
 

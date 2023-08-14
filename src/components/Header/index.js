@@ -58,7 +58,13 @@ function Header(userInfo) {
   return (
     <div className="header d-flex justify-content-between mb-4">
       <div className="logo">
-        <h1 className="heading"><span style={{ color: "#f04800" }}>#</span>TheLabourForce</h1>
+      <NavLink to='/' style={{ textDecoration: 'none', color: 'black' }}>
+        <h1 className="heading">
+          <span style={{ color: '#f04800' }}>#</span>
+          <span>TheLabourForce</span>
+        </h1>
+      </NavLink>
+
       </div>
       <div className="options">
         {!user? (
