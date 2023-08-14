@@ -23,7 +23,12 @@ const Homepage = (userInfo) => {
         </div>
       </div>
     </div>
-    <Row userInfo={userInfo}/>
+    <div className='row'>
+    <h2 className="profession-header">Electrician</h2>
+    <Row userInfo={userInfo} category="Electrician"/>
+    <h2 className="profession-header">Plumber</h2>
+    <Row userInfo={userInfo} category="Plumber"/>
+    </div>
     </div>
   );
 };
