@@ -82,8 +82,7 @@
   background-color: #f8f8f8;
   border-bottom-left-radius: 15px;
   border-bottom-right-radius: 15px;
-  transform: translateY(0);
-  transition: transform 0.2s ease-in-out;
+ 
 }
 
 .row-button {
@@ -95,10 +94,13 @@
   cursor: pointer;
 }
 
-.row-button:hover {
-  background-color: white;
-  color: black;
+.row-button-right{
+  background-color: #f04800;
 }
+
+/* .row-button:hover {
+  
+} */
 
 
 

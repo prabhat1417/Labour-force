@@ -1,28 +1,28 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./index.css";
-import { db,auth} from "../../firebase";
-import {collection,getDocs,updateDoc} from "firebase/firestore";
-
-
+import {db,auth } from "../../firebase";
+import { collection, getDocs, query, updateDoc, where,doc} from "firebase/firestore";
 
 const ProfileCardRow = (props) => {
   const [userLoaded, setUserLoaded] = useState(false);
   const [customer,setCustomer]=useState(null);
   const user = props.userInfo.userInfo;
+  console.log(user);
   const profession = props.category;
   const navigate = useNavigate();
 
   useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged(async (currentuser) => {
+    const unsubscribe = auth.onAuthStateChanged((currentuser) => {
       if (currentuser) {
         setCustomer(currentuser);
       } else {
         setCustomer(null);
       }
     });
-    return () => unsubscribe();
+    return () => unsubscribe(); // Call the unsubscribe function
   }, []);
+  
   useEffect(() => {
     const delay = 2000;
     const timer = setTimeout(() => {
@@ -30,22 +30,45 @@ const ProfileCardRow = (props) => {
     }, delay);
 
     return () => clearTimeout(timer);
-
   }, []);
 
   if (!userLoaded) {
     return null;
   }
 
+  const handlebook = async (email) => {
+    try {
+      const membershipsRef = collection(db, "memberships");
+      const querySnapshot = await getDocs(
+        query(membershipsRef, where("email", "==", email))
+      );
+  
+      if (!querySnapshot.empty) {
+        const membershipsDocRef = doc(membershipsRef, querySnapshot.docs[0].id); // Get document reference
+  
+        const customers = querySnapshot.docs[0].data().customers || [];
+  
+        // Add the new customer object to the array
+        customers.push({
+          name: customer.displayName || "",
+          email: customer.email || "",
+          photourl: customer.photoURL || "",
+        });
+  
+        // Update the document with the new customers array
+        await updateDoc(membershipsDocRef, { customers });
+        alert("Membership document updated");
+      } else {
+        console.log("Membership document not found");
+      }
+    } catch (error) {
+      console.error("Error updating membership document:", error);
+    }
+  };
   
   
 
-const hanldeCustomer=(email)=>{  
-const WorkerObj=user.filter((obj)=>obj.email===email);
- }
-
-
-
+  
   const filteredUsers = user.filter((profile) => profile.category === profession);
   return (
     <>
@@ -78,8 +101,8 @@ const WorkerObj=user.filter((obj)=>obj.email===email);
             <button
                 className="row-button row-button-left"
                 onClick={() => navigate("/description", { state: { profile } })}
-              >View</button>  
-              <button className="row-button row-button-right" onClick={()=>hanldeCustomer(profile.email)}>Book</button>
+              >View</button>
+              <button className="row-button row-button-right" onClick={()=>handlebook(profile.email)}>Book</button>
             </div>
           </div>
         ))}
