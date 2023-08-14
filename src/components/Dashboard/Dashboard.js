@@ -35,12 +35,6 @@ const Dashboard = ({userInfo}) => {
         console.log("currWorker ", currWorker);
     }
 
-    const columns = [
-        { field: 'id', headerName: 'ID', flex: 1 },
-        { field: 'email', headerName: 'Name', flex: 2 },
-        { field: 'Status', headerName: 'Name', flex: 2 },
-      ];
-
   return (
     <div className='dashboard'>
         <div className='dashboard-profile'>
