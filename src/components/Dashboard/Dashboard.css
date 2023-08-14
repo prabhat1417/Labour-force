@@ -1,19 +1,23 @@
 .dashboard {
-    background-color: #7561d4;
+    display: grid;
+    background-color: white;
     height: 100%;
     width: 100%;
+    padding: 40px;
 }
+
 .dashboard-profile {
     display: grid;
-    padding: 20px;
     background-color: #ffffff;
+    grid-template-columns: repeat(2, 1fr); 
+    grid-gap: 20px;
 }
 
 .profile-pic {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 30%;
+    width: 90%;
     background-color: white;
     padding: 25px;
 }
@@ -28,9 +32,10 @@
 .box {
     border: 2px solid black; 
     border-radius: 10px; 
-    width: 30%;
+    width: 90%;
     margin-top: 10px;
     margin-bottom: 10px;
+    height: auto;
 }
 
 .info {
@@ -50,4 +55,80 @@
 .name-style {
     color: #3f24c2;
     font-size: 25px;
+}
+
+.customers {
+    height: 100%;
+    width: 95%;
+    align-items: center;
+    padding: 40px;
+    border: 2px solid black;
+    border-radius: 10px;  
+    margin-top: 20px;
+}
+
+.customer-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    border: 2px solid #333;
+}
+
+.customer-table th,
+.customer-table td {
+    border: 1px solid #333;
+    padding: 12px;
+    text-align: center;
+    font-size: 16px;
+}
+
+.customer-table th {
+    background-color: #222;
+    color: white;
+    font-weight: bold;
+}
+
+.customer-table tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+@media (max-width: 768px) {
+    
+}
+
+@media (max-width: 768px) {
+    .dashboard-profile {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        grid-column: span 2;                    
+    }
+
+    .dashboard {
+        display: block;
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .box {
+        border: 2px solid black; 
+        border-radius: 10px; 
+        width: 100%;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        height: auto;
+    }
+
+    .customers {
+        height: 100%;
+        width: 100%;
+        align-items: center;
+        padding: 20px;
+        border: 2px solid black;
+        border-radius: 10px;  
+        margin-top: 20px;
+    }
+
+    .customer-table th:nth-child(2),
+    .customer-table td:nth-child(2) {
+        display: none;
+    }
 }
