@@ -1,13 +1,28 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./index.css";
+import { db,auth} from "../../firebase";
+import {collection,getDocs,updateDoc} from "firebase/firestore";
+
+
 
 const ProfileCardRow = (props) => {
   const [userLoaded, setUserLoaded] = useState(false);
+  const [customer,setCustomer]=useState(null);
   const user = props.userInfo.userInfo;
-  console.log(user);
   const profession = props.category;
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged(async (currentuser) => {
+      if (currentuser) {
+        setCustomer(currentuser);
+      } else {
+        setCustomer(null);
+      }
+    });
+    return () => unsubscribe();
+  }, []);
   useEffect(() => {
     const delay = 2000;
     const timer = setTimeout(() => {
@@ -21,7 +36,16 @@ const ProfileCardRow = (props) => {
   if (!userLoaded) {
     return null;
   }
+
   
+  
+
+const hanldeCustomer=(email)=>{  
+const WorkerObj=user.filter((obj)=>obj.email===email);
+ }
+
+
+
   const filteredUsers = user.filter((profile) => profile.category === profession);
   return (
     <>
@@ -54,8 +78,8 @@ const ProfileCardRow = (props) => {
             <button
                 className="row-button row-button-left"
                 onClick={() => navigate("/description", { state: { profile } })}
-              >View</button>
-              <button className="row-button row-button-right">Book</button>
+              >View</button>  
+              <button className="row-button row-button-right" onClick={()=>hanldeCustomer(profile.email)}>Book</button>
             </div>
           </div>
         ))}

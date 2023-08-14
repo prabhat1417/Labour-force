@@ -15,7 +15,13 @@ const RegistrationForm = () => {
     city: '',
     MobileNo: '',
     Experience:'', 
-    customers: [],
+    customers: [{
+      name:'',
+      emial:'',
+      photoUrl:''
+    }],
+    Peoplecnt:0,
+    Rating:0,
     isWorker:false
   });
   const [errormsg, setErrorMsg] = useState('');
