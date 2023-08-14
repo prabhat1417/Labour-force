@@ -75,10 +75,6 @@ select::-ms-expand {
   color: white;
 }
 
-/* Custom styles for the content section */
-.content {
-}
-
 .search {
   padding: 10px;
   outline: none;
