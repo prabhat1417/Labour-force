@@ -10,7 +10,7 @@ const Footer = () => {
       <FontAwesomeIcon icon={faInstagram} className="footer-icon" />
       <FontAwesomeIcon icon={faTwitter} className="footer-icon" />
       <FontAwesomeIcon icon={faEnvelopeSolid} className="footer-icon" />
-      <p>© Copyright 2022 TinDog</p>
+      <p>© Copyright 2023 <span className='company'>#THE LABOUR FORCE</span> </p>
     </footer>
   );
 };

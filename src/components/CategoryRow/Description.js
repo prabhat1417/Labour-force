@@ -1,10 +1,54 @@
-import React from "react";
+import React,{useState,useEffect} from "react";
 import { useLocation } from "react-router-dom";
+import toast from "react-hot-toast";
+import {db,auth } from "../../firebase";
+import { collection, getDocs, query, updateDoc, where,doc} from "firebase/firestore";
 
 const Description = () => {
+    const [customer,setCustomer]=useState(null);
     const location = useLocation();
     const profile = location.state.profile;
-    console.log(profile);
+    useEffect(() => {
+        const unsubscribe = auth.onAuthStateChanged((currentuser) => {
+          if (currentuser) {
+            setCustomer(currentuser);
+          } else {
+            setCustomer(null);
+          }
+        });
+        return () => unsubscribe(); // Call the unsubscribe function
+      }, []);
+
+      const handlebook = async (email) => {
+        try {
+          const membershipsRef = collection(db, "memberships");
+          const querySnapshot = await getDocs(
+            query(membershipsRef, where("email", "==", email))
+          );
+      
+          if (!querySnapshot.empty) {
+            const membershipsDocRef = doc(membershipsRef, querySnapshot.docs[0].id); // Get document reference
+      
+            const customers = querySnapshot.docs[0].data().customers || [];
+      
+            // Add the new customer object to the array
+            customers.push({
+              name: customer.displayName || "",
+              email: customer.email || "",
+              photourl: customer.photoURL || "",
+            });
+      
+            // Update the document with the new customers array
+            await updateDoc(membershipsDocRef, { customers });
+            toast.success("Booking Successfull");
+          } else {
+            toast.success("Some error in Booking");
+          }
+        } catch (error) {
+          console.error("Error updating membership document:", error);
+        }
+      };
+
     return (
         <div className='dashboard'>
             <div className='dashboard-profile'>
@@ -12,7 +56,7 @@ const Description = () => {
                     <div className='pic'>
                         <img style={{ width: '150px' }} src={'https://www.epicscotland.com/wp-content/uploads/2018/01/Business-Headshot_002.jpg'} alt="hii" />
                     </div>
-                    <button className="btn btn-dark">Book Now</button>
+                    <button className="btn btn-dark" onClick={()=>handlebook(profile.email)}>Book Now</button>
                 </div>
                 <div className='box'>
                     <div className='info'>

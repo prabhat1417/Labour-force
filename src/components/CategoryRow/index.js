@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./index.css";
+import toast from "react-hot-toast";
 import {db,auth } from "../../firebase";
 import { collection, getDocs, query, updateDoc, where,doc} from "firebase/firestore";
 
@@ -8,10 +9,17 @@ const ProfileCardRow = (props) => {
   const [userLoaded, setUserLoaded] = useState(false);
   const [customer,setCustomer]=useState(null);
   const user = props.userInfo.userInfo;
-  console.log(user);
   const profession = props.category;
   const navigate = useNavigate();
+  
+  useEffect(() => {
+    const delay = 2000;
+    const timer = setTimeout(() => {
+      setUserLoaded(true);
+    }, delay);
 
+    return () => clearTimeout(timer);
+  }, []);
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((currentuser) => {
       if (currentuser) {
@@ -22,16 +30,6 @@ const ProfileCardRow = (props) => {
     });
     return () => unsubscribe(); // Call the unsubscribe function
   }, []);
-  
-  useEffect(() => {
-    const delay = 2000;
-    const timer = setTimeout(() => {
-      setUserLoaded(true);
-    }, delay);
-
-    return () => clearTimeout(timer);
-  }, []);
-
   if (!userLoaded) {
     return null;
   }
@@ -57,17 +55,14 @@ const ProfileCardRow = (props) => {
   
         // Update the document with the new customers array
         await updateDoc(membershipsDocRef, { customers });
-        alert("Membership document updated");
+        toast.success("Booking Successfull");
       } else {
-        console.log("Membership document not found");
+        toast.success("Some error in Booking");
       }
     } catch (error) {
       console.error("Error updating membership document:", error);
     }
   };
-  
-  
-
   
   const filteredUsers = user.filter((profile) => profile.category === profession);
   return (
@@ -76,7 +71,7 @@ const ProfileCardRow = (props) => {
         {filteredUsers.map((profile, index) => (
           <div className="row-card-container" key={index}>
             <header className="row-back">
-              <img className="row-logo" src={'https://www.epicscotland.com/wp-content/uploads/2018/01/Business-Headshot_002.jpg'} alt={profile.name} />
+              <img className="row-logo" src={'https://th.bing.com/th/id/R.2c2859b25e1c03d7cc4b660f8e4a8670?rik=bJNkrRGQp7Jmag&riu=http%3a%2f%2fridley-thomas.lacounty.gov%2fwp-content%2fuploads%2f2011%2f09%2fworkerProfile.jpg&ehk=JEm8d3VGp9kPnivrDYF4jhL%2by3Xu7RvF%2bzz1ZSw3Gas%3d&risl=&pid=ImgRaw&r=0'} alt={profile.name} />
             </header>
             <h1 className="row-bold-text">
               {profile.Name}

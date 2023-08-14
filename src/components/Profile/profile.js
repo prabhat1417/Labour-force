@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
+import { toast } from "react-hot-toast";
 import { auth, db } from "../../firebase";
 import { useNavigate } from "react-router-dom";
 import { getDocs, collection, where, query } from "firebase/firestore";
 import Cookies from "js-cookie";
-
 
 const Profile = () => {
   const navigate = useNavigate();
@@ -49,6 +49,7 @@ const Profile = () => {
       .signOut()
       .then(() => {
         Cookies.remove("shownAlert");
+        toast.success("Sussessfully Logged Out");
         navigate("/");
       })
       .catch((error) => {

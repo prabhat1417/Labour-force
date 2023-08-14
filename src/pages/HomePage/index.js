@@ -2,6 +2,7 @@ import React from 'react';
 import './index.css';
 import image from '../../images/hero.png';
 import Row from '../../components/CategoryRow/index';
+import Footer from '../../components/Footer';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Homepage = (userInfo) => {
@@ -29,6 +30,7 @@ const Homepage = (userInfo) => {
     <h2 className="profession-header">Plumber</h2>
     <Row userInfo={userInfo} category="Plumber"/>
     </div>
+    <Footer />
     </div>
   );
 };

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Toast } from "react-hot-toast";
 import InputControl from "../inputControll/inputcontrol";
 import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap CSS
 import { FaGoogle, FaFacebook } from "react-icons/fa";
@@ -36,17 +37,16 @@ const SignUp = () => {
                         email: value.email,
                         password: value.password,
                     });
-
+                    toast.success("Sussessfully Signed in");
                     navigate("/");
                 })
                 .catch((error) => {
                     // console.log('Error creating user:', error.message);
-                    setErrormsg(error.message);
-
+                    toast.error(error.message);
                     if (error.code === "auth/email-already-in-use") {
                         // User is already registered, redirect to login page
                         // navigate('/login');
-                        setErrormsg(error.message);
+                        toast.error(error.message);
                     }
                 });
         }
@@ -56,6 +56,7 @@ const SignUp = () => {
         const provider = new GoogleAuthProvider();
         signInWithPopup(auth, provider)
             .then((result) => {
+                toast.success("Sussessfully Signed in");
                 navigate('/')
             })
             .catch((error) => {
