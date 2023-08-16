@@ -3,6 +3,8 @@ import { useLocation } from "react-router-dom";
 import toast from "react-hot-toast";
 import {db,auth } from "../../firebase";
 import { collection, getDocs, query, updateDoc, where,doc} from "firebase/firestore";
+import Header from "../Header";
+import Footer from "../Footer";
 
 const Description = () => {
     const [customer,setCustomer]=useState(null);
@@ -50,6 +52,8 @@ const Description = () => {
       };
 
     return (
+      <>
+      <Header />
         <div className='dashboard'>
             <div className='dashboard-profile'>
                 <div className='profile-pic'>
@@ -101,6 +105,8 @@ const Description = () => {
             </div>
 
         </div>
+        <Footer />
+        </>
     )
 }
 
