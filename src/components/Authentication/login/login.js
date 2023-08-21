@@ -62,9 +62,11 @@ const Login = () => {
         <button className="btn btn-primary btn-block mt-4" onClick={handleLogin}>
           Login
         </button>
-
+        
         <p className="text-center mt-3 mb-0">
-          Create an account?{" "}
+          {/* Create an account?{" "} */}
+            <span style={{color: "black"}}>Create an account? </span>
+
           <span className="text-primary" >
             Signup
           </span>
