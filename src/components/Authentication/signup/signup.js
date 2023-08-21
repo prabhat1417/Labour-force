@@ -127,7 +127,7 @@ const SignUp = () => {
                     Signup
                 </button>
                 <p className="text-center mt-3 mb-0">
-                    Already have an account?{" "}
+                    <span style={{color: "black"}}>Already have an account?{" "}</span>
                     <span className="text-primary">
                         Login
                     </span>
