@@ -26,7 +26,7 @@ const Dashboard = ({userInfo}) => {
                 const querySnapshot=await getDocs(query(CollectionRef,where("email","==",user.email)));
                 if(!querySnapshot.empty){
                     const customer=querySnapshot.docs[0].data();
-                    console.log("customer:",customer);
+                    // console.log("customer:",customer);
                 }
               
     
@@ -39,7 +39,8 @@ const Dashboard = ({userInfo}) => {
                     setTimeout(()=>{
 
                     },0)
-                    foundWorker.customers = Array.from({ length: 1 }, (_, index) => `customer${index + 1}@example.com`);
+                    // console.log("customers ", foundWorker.customers);
+                    // foundWorker.customers = Array.from({ length: 1 }, (_, index) => `customer${index + 1}@example.com`);
                     setCurrWorker(foundWorker);
                 }
             } else {
@@ -50,9 +51,9 @@ const Dashboard = ({userInfo}) => {
     }, []);
     
 
-    if(currUser) {
-        console.log("currUser ", currWorker);
-    }
+    // if(currUser) {
+    //     console.log("currUser ", currWorker);
+    // }
 
   return (
     <div className='dashboard'>

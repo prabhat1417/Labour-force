@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
 const CustomerTable = ({ customers }) => {
+    // console.log("customers ", customers);
     const [selectedCustomer, setSelectedCustomer] = useState(null);
 
     return (
@@ -11,8 +12,8 @@ const CustomerTable = ({ customers }) => {
                     <tr>
                         <th>ID</th>
                         <th>Name</th>
-                        <th>Phone number</th>
-                        <th>Status</th>
+                        <th>Email</th>
+                        {/* <th>Status</th> */}
                     </tr>
                 </thead>
                 <tbody>
@@ -28,9 +29,10 @@ const CustomerTable = ({ customers }) => {
                             <td>{customer.status}</td> */}
 
                             <td>{index + 1}</td>
-                            <td>{customer}</td>
-                            <td>4597645656</td>
-                            <td>Pending</td>
+                            <td>{customer.name}</td>
+                            <td>{customer.email}</td>
+                            {/* <td>4597645656</td>
+                            <td>Pending</td> */}
 
                         </tr>
                     ))}
@@ -40,8 +42,8 @@ const CustomerTable = ({ customers }) => {
                 <div className='customer-details'>
                     <h2>Customer Details</h2>
                     <p><strong>Name:</strong> {selectedCustomer.name}</p>
-                    <p><strong>Phone number:</strong> {selectedCustomer.phoneNumber}</p>
-                    <p><strong>Status:</strong> {selectedCustomer.status}</p>
+                    <p><strong>Phone number:</strong> {selectedCustomer.email}</p>
+                    {/* <p><strong>Status:</strong> {selectedCustomer.status}</p> */}
                 </div>
             )}
         </div>
